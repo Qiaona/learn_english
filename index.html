@@ -105,71 +105,74 @@
     </div>
 
     <script>
-        const words = [
-            // Numbers (數字)
-            { en: "one", zh: "一", emoji: "1️⃣", category: "Numbers 數字" },
-            { en: "two", zh: "二", emoji: "2️⃣", category: "Numbers 數字" },
-            { en: "three", zh: "三", emoji: "3️⃣", category: "Numbers 數字" },
-            { en: "four", zh: "四", emoji: "4️⃣", category: "Numbers 數字" },
-            { en: "five", zh: "五", emoji: "5️⃣", category: "Numbers 數字" },
-            { en: "six", zh: "六", emoji: "6️⃣", category: "Numbers 數字" },
-            { en: "seven", zh: "七", emoji: "7️⃣", category: "Numbers 數字" },
-            { en: "eight", zh: "八", emoji: "8️⃣", category: "Numbers 數字" },
-            { en: "nine", zh: "九", emoji: "9️⃣", category: "Numbers 數字" },
-            { en: "ten", zh: "十", emoji: "🔟", category: "Numbers 數字" },
+    const words = [
+    // Numbers (數字)
+    { en: "one", ipa: "/wʌn/", zh: "一", emoji: "1️⃣", example: "I have one apple.", category: "Numbers 數字" },
+    { en: "two", ipa: "/tuː/", zh: "二", emoji: "2️⃣", example: "I have two eyes.", category: "Numbers 數字" },
+    { en: "three", ipa: "/θriː/", zh: "三", emoji: "3️⃣", example: "I see three birds.", category: "Numbers 數字" },
+    { en: "four", ipa: "/fɔː/", zh: "四", emoji: "4️⃣", example: "There are four chairs.", category: "Numbers 數字" },
+    { en: "five", ipa: "/faɪv/", zh: "五", emoji: "5️⃣", example: "I have five pencils.", category: "Numbers 數字" },
+    { en: "six", ipa: "/sɪks/", zh: "六", emoji: "6️⃣", example: "She is six years old.", category: "Numbers 數字" },
+    { en: "seven", ipa: "/ˈsev.n̩/", zh: "七", emoji: "7️⃣", example: "I see seven stars.", category: "Numbers 數字" },
+    { en: "eight", ipa: "/eɪt/", zh: "八", emoji: "8️⃣", example: "Eight pigs are fat.", category: "Numbers 數字" },
+    { en: "nine", ipa: "/naɪn/", zh: "九", emoji: "9️⃣", example: "I have nine books.", category: "Numbers 數字" },
+    { en: "ten", ipa: "/ten/", zh: "十", emoji: "🔟", example: "I have ten fingers.", category: "Numbers 數字" },
 
-            // Colours (顏色)
-            { en: "red", zh: "紅色", emoji: "🔴", category: "Colours 顏色" },
-            { en: "blue", zh: "藍色", emoji: "🔵", category: "Colours 顏色" },
-            { en: "yellow", zh: "黃色", emoji: "🟡", category: "Colours 顏色" },
-            { en: "green", zh: "綠色", emoji: "🟢", category: "Colours 顏色" },
-            { en: "black", zh: "黑色", emoji: "⚫", category: "Colours 顏色" },
-            { en: "white", zh: "白色", emoji: "⚪", category: "Colours 顏色" },
-            { en: "pink", zh: "粉紅色", emoji: "🌸", category: "Colours 顏色" },
+    // Colours (顏色)
+    { en: "red", ipa: "/red/", zh: "紅色", emoji: "🔴", example: "The apple is red.", category: "Colours 顏色" },
+    { en: "blue", ipa: "/bluː/", zh: "藍色", emoji: "🔵", example: "The sky is blue.", category: "Colours 顏色" },
+    { en: "yellow", ipa: "/ˈjel.əʊ/", zh: "黃色", emoji: "🟡", example: "Look at the yellow sun.", category: "Colours 顏色" },
+    { en: "green", ipa: "/ɡriːn/", zh: "綠色", emoji: "🟢", example: "The grass is green.", category: "Colours 顏色" },
+    { en: "black", ipa: "/blæk/", zh: "黑色", emoji: "⚫", example: "I have a black pen.", category: "Colours 顏色" },
+    { en: "white", ipa: "/waɪt/", zh: "白色", emoji: "⚪", example: "The cloud is white.", category: "Colours 顏色" },
+    { en: "pink", ipa: "/pɪŋk/", zh: "粉紅色", emoji: "🌸", example: "I like my pink bag.", category: "Colours 顏色" },
 
-            // School Things (學校用品)
-            { en: "book", zh: "書本", emoji: "📖", category: "School Things 學校用品" },
-            { en: "pen", zh: "原子筆", emoji: "🖊️", category: "School Things 學校用品" },
-            { en: "pencil", zh: "鉛筆", emoji: "✏️", category: "School Things 學校用品" },
-            { en: "ruler", zh: "間尺", emoji: "📏", category: "School Things 學校用品" },
-            { en: "rubber", zh: "橡皮擦", emoji: "🧽", category: "School Things 學校用品" },
-            { en: "bag", zh: "書包", emoji: "🎒", category: "School Things 學校用品" },
-            { en: "desk", zh: "書桌", emoji: "🏫", category: "School Things 學校用品" },
-            { en: "chair", zh: "椅子", emoji: "🪑", category: "School Things 學校用品" },
+    // School Things (學校用品)
+    { en: "book", ipa: "/bʊk/", zh: "書本", emoji: "📖", example: "Read your book.", category: "School Things 學校用品" },
+    { en: "pen", ipa: "/pen/", zh: "原子筆", emoji: "🖊️", example: "I use a pen to write.", category: "School Things 學校用品" },
+    { en: "pencil", ipa: "/ˈpen.səl/", zh: "鉛筆", emoji: "✏️", example: "My pencil is short.", category: "School Things 學校用品" },
+    { en: "ruler", ipa: "/ˈruː.lə/", zh: "間尺", emoji: "📏", example: "The ruler is long.", category: "School Things 學校用品" },
+    { en: "rubber", ipa: "/ˈrʌb.ə/", zh: "橡皮擦", emoji: "🧽", example: "I have a small rubber.", category: "School Things 學校用品" },
+    { en: "bag", ipa: "/bæɡ/", zh: "書包", emoji: "🎒", example: "My bag is heavy.", category: "School Things 學校用品" },
+    { en: "desk", ipa: "/desk/", zh: "書桌", emoji: "🏫", example: "Put it on the desk.", category: "School Things 學校用品" },
+    { en: "chair", ipa: "/tʃeə/", zh: "椅子", emoji: "🪑", example: "Sit on the chair.", category: "School Things 學校用品" },
 
-            // Family (家庭成員)
-            { en: "father", zh: "爸爸", emoji: "👨", category: "Family 家庭" },
-            { en: "mother", zh: "媽媽", emoji: "👩", category: "Family 家庭" },
-            { en: "brother", zh: "兄弟", emoji: "👦", category: "Family 家庭" },
-            { en: "sister", zh: "姊妹", emoji: "👧", category: "Family 家庭" },
-            { en: "grandfather", zh: "祖父/外公", emoji: "👴", category: "Family 家庭" },
-            { en: "grandmother", zh: "祖母/外婆", emoji: "👵", category: "Family 家庭" },
+    // Family (家庭成員)
+    { en: "father", ipa: "/ˈfɑː.ðə/", zh: "爸爸", emoji: "👨", example: "He is my father.", category: "Family 家庭" },
+    { en: "mother", ipa: "/ˈmʌð.ə/", zh: "媽媽", emoji: "👩", example: "She is my mother.", category: "Family 家庭" },
+    { en: "brother", ipa: "/ˈbrʌð.ə/", zh: "兄弟", emoji: "👦", example: "I play with my brother.", category: "Family 家庭" },
+    { en: "sister", ipa: "/ˈsɪs.tə/", zh: "姊妹", emoji: "👧", example: "My sister is cute.", category: "Family 家庭" },
+    { en: "grandfather", ipa: "/ˈɡræn.fɑː.ðə/", zh: "祖父/外公", emoji: "👴", example: "My grandfather is kind.", category: "Family 家庭" },
+    { en: "grandmother", ipa: "/ˈɡræn.mʌð.ə/", zh: "祖母/外婆", emoji: "👵", example: "I love my grandmother.", category: "Family 家庭" },
 
-            // Body Parts (身體部位)
-            { en: "head", zh: "頭", emoji: "👦", category: "Body Parts 身體部位" },
-            { en: "eye", zh: "眼睛", emoji: "👁️", category: "Body Parts 身體部位" },
-            { en: "ear", zh: "耳朵", emoji: "👂", category: "Body Parts 身體部位" },
-            { en: "nose", zh: "鼻子", emoji: "👃", category: "Body Parts 身體部位" },
-            { en: "mouth", zh: "嘴巴", emoji: "👄", category: "Body Parts 身體部位" },
-            { en: "hand", zh: "手", emoji: "✋", category: "Body Parts 身體部位" },
-            { en: "leg", zh: "腿", emoji: "🦵", category: "Body Parts 身體部位" },
+    // Body Parts (身體部位)
+    { en: "head", ipa: "/hed/", zh: "頭", emoji: "👦", example: "Touch your head.", category: "Body Parts 身體部位" },
+    { en: "eye", ipa: "/aɪ/", zh: "眼睛", emoji: "👁️", example: "I have two eyes.", category: "Body Parts 身體部位" },
+    { en: "ear", ipa: "/ɪə/", zh: "耳朵", emoji: "👂", example: "I listen with my ears.", category: "Body Parts 身體部位" },
+    { en: "nose", ipa: "/nəʊz/", zh: "鼻子", emoji: "👃", example: "This is my nose.", category: "Body Parts 身體部位" },
+    { en: "mouth", ipa: "/maʊθ/", zh: "嘴巴", emoji: "👄", example: "Open your mouth.", category: "Body Parts 身體部位" },
+    { en: "hand", ipa: "/hænd/", zh: "手", emoji: "✋", example: "Wash your hands.", category: "Body Parts 身體部位" },
+    { en: "leg", ipa: "/leɡ/", zh: "腿", emoji: "🦵", example: "He has long legs.", category: "Body Parts 身體部位" },
 
-            // Animals/Pets (動物)
-            { en: "cat", zh: "貓", emoji: "🐱", category: "Animals 動物" },
-            { en: "dog", zh: "狗", emoji: "🐶", category: "Animals 動物" },
-            { en: "bird", zh: "鳥", emoji: "🐦", category: "Animals 動物" },
-            { en: "fish", zh: "魚", emoji: "🐟", category: "Animals 動物" },
-            { en: "rabbit", zh: "兔子", emoji: "🐰", category: "Animals 動物" },
-            { en: "turtle", zh: "烏龜", emoji: "🐢", category: "Animals 動物" },
+    // Animals/Pets (動物)
+    { en: "cat", ipa: "/kæt/", zh: "貓", emoji: "🐱", example: "The cat is sleeping.", category: "Animals 動物" },
+    { en: "dog", ipa: "/dɒɡ/", zh: "狗", emoji: "🐶", example: "The dog is barking.", category: "Animals 動物" },
+    { en: "bird", ipa: "/bɜːd/", zh: "鳥", emoji: "🐦", example: "The bird can fly.", category: "Animals 動物" },
+    { en: "fish", ipa: "/fɪʃ/", zh: "魚", emoji: "🐟", category: "Animals 動物" },
+    { en: "rabbit", ipa: "/ˈræb.ɪt/", zh: "兔子", emoji: "🐰", example: "The rabbit likes carrots.", category: "Animals 動物" },
+    { en: "turtle", ipa: "/ˈtɜː.tl̩/", zh: "烏龜", emoji: "🐢", example: "The turtle is slow.", category: "Animals 動物" },
 
-            // Food & Drinks (食物與飲品)
-            { en: "apple", zh: "蘋果", emoji: "🍎", category: "Food 食物" },
-            { en: "banana", zh: "香蕉", emoji: "🍌", category: "Food 食物" },
-            { en: "orange", zh: "橙", emoji: "🍊", category: "Food 食物" },
-            { en: "milk", zh: "牛奶", emoji: "🥛", category: "Food 食物" },
-            { en: "water", zh: "水", emoji: "💧", category: "Food 食物" },
-            { en: "cake", zh: "蛋糕", emoji: "🍰", category: "Food 食物" }
-        ];        
+    // Food & Drinks (食物與飲品)
+    { en: "apple", ipa: "/ˈæp.l̩/", zh: "蘋果", emoji: "🍎", example: "I eat an apple.", category: "Food 食物" },
+    { en: "banana", ipa: "/bəˈnɑː.nə/", zh: "香蕉", emoji: "🍌", example: "The banana is yellow.", category: "Food 食物" },
+    { en: "orange", ipa: "/ˈɒr.ɪndʒ/", zh: "橙", emoji: "🍊", example: "I like orange juice.", category: "Food 食物" },
+    { en: "milk", ipa: "/mɪlk/", zh: "牛奶", emoji: "🥛", example: "Drink your milk.", category: "Food 食物" },
+    { en: "water", ipa: "/ˈwɔː.tə/", zh: "水", emoji: "💧", example: "I drink water every day.", category: "Food 食物" },
+    { en: "cake", ipa: "/keɪk/", zh: "蛋糕", emoji: "🍰", example: "Happy Birthday! Have some cake.", category: "Food 食物" }
+];
+
+
+    
         let currentIndex = 0;
 
         function updateDisplay() {
