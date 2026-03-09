@@ -106,14 +106,70 @@
 
     <script>
         const words = [
-            { en: "apple", ipa: "/ˈæp.l̩/", zh: "蘋果", emoji: "🍎", example: "This is an apple.", category: "Food 食物" },
-            { en: "cat", ipa: "/kæt/", zh: "貓", emoji: "🐱", example: "I have a cute cat.", category: "Animals 動物" },
-            { en: "dog", ipa: "/dɒɡ/", zh: "狗", emoji: "🐶", example: "The dog is running.", category: "Animals 動物" },
-            { en: "book", ipa: "/bʊk/", zh: "書本", emoji: "📖", example: "Open your book.", category: "School 學校" },
-            { en: "ruler", ipa: "/ˈruː.lə/", zh: "間尺", emoji: "📏", example: "Use a long ruler.", category: "School 學校" },
-            { en: "red", ipa: "/red/", zh: "紅色", emoji: "🔴", example: "The apple is red.", category: "Colours 顏色" }
-        ];
-        
+            // Numbers (數字)
+            { en: "one", zh: "一", emoji: "1️⃣", category: "Numbers 數字" },
+            { en: "two", zh: "二", emoji: "2️⃣", category: "Numbers 數字" },
+            { en: "three", zh: "三", emoji: "3️⃣", category: "Numbers 數字" },
+            { en: "four", zh: "四", emoji: "4️⃣", category: "Numbers 數字" },
+            { en: "five", zh: "五", emoji: "5️⃣", category: "Numbers 數字" },
+            { en: "six", zh: "六", emoji: "6️⃣", category: "Numbers 數字" },
+            { en: "seven", zh: "七", emoji: "7️⃣", category: "Numbers 數字" },
+            { en: "eight", zh: "八", emoji: "8️⃣", category: "Numbers 數字" },
+            { en: "nine", zh: "九", emoji: "9️⃣", category: "Numbers 數字" },
+            { en: "ten", zh: "十", emoji: "🔟", category: "Numbers 數字" },
+
+            // Colours (顏色)
+            { en: "red", zh: "紅色", emoji: "🔴", category: "Colours 顏色" },
+            { en: "blue", zh: "藍色", emoji: "🔵", category: "Colours 顏色" },
+            { en: "yellow", zh: "黃色", emoji: "🟡", category: "Colours 顏色" },
+            { en: "green", zh: "綠色", emoji: "🟢", category: "Colours 顏色" },
+            { en: "black", zh: "黑色", emoji: "⚫", category: "Colours 顏色" },
+            { en: "white", zh: "白色", emoji: "⚪", category: "Colours 顏色" },
+            { en: "pink", zh: "粉紅色", emoji: "🌸", category: "Colours 顏色" },
+
+            // School Things (學校用品)
+            { en: "book", zh: "書本", emoji: "📖", category: "School Things 學校用品" },
+            { en: "pen", zh: "原子筆", emoji: "🖊️", category: "School Things 學校用品" },
+            { en: "pencil", zh: "鉛筆", emoji: "✏️", category: "School Things 學校用品" },
+            { en: "ruler", zh: "間尺", emoji: "📏", category: "School Things 學校用品" },
+            { en: "rubber", zh: "橡皮擦", emoji: "🧽", category: "School Things 學校用品" },
+            { en: "bag", zh: "書包", emoji: "🎒", category: "School Things 學校用品" },
+            { en: "desk", zh: "書桌", emoji: "🏫", category: "School Things 學校用品" },
+            { en: "chair", zh: "椅子", emoji: "🪑", category: "School Things 學校用品" },
+
+            // Family (家庭成員)
+            { en: "father", zh: "爸爸", emoji: "👨", category: "Family 家庭" },
+            { en: "mother", zh: "媽媽", emoji: "👩", category: "Family 家庭" },
+            { en: "brother", zh: "兄弟", emoji: "👦", category: "Family 家庭" },
+            { en: "sister", zh: "姊妹", emoji: "👧", category: "Family 家庭" },
+            { en: "grandfather", zh: "祖父/外公", emoji: "👴", category: "Family 家庭" },
+            { en: "grandmother", zh: "祖母/外婆", emoji: "👵", category: "Family 家庭" },
+
+            // Body Parts (身體部位)
+            { en: "head", zh: "頭", emoji: "👦", category: "Body Parts 身體部位" },
+            { en: "eye", zh: "眼睛", emoji: "👁️", category: "Body Parts 身體部位" },
+            { en: "ear", zh: "耳朵", emoji: "👂", category: "Body Parts 身體部位" },
+            { en: "nose", zh: "鼻子", emoji: "👃", category: "Body Parts 身體部位" },
+            { en: "mouth", zh: "嘴巴", emoji: "👄", category: "Body Parts 身體部位" },
+            { en: "hand", zh: "手", emoji: "✋", category: "Body Parts 身體部位" },
+            { en: "leg", zh: "腿", emoji: "🦵", category: "Body Parts 身體部位" },
+
+            // Animals/Pets (動物)
+            { en: "cat", zh: "貓", emoji: "🐱", category: "Animals 動物" },
+            { en: "dog", zh: "狗", emoji: "🐶", category: "Animals 動物" },
+            { en: "bird", zh: "鳥", emoji: "🐦", category: "Animals 動物" },
+            { en: "fish", zh: "魚", emoji: "🐟", category: "Animals 動物" },
+            { en: "rabbit", zh: "兔子", emoji: "🐰", category: "Animals 動物" },
+            { en: "turtle", zh: "烏龜", emoji: "🐢", category: "Animals 動物" },
+
+            // Food & Drinks (食物與飲品)
+            { en: "apple", zh: "蘋果", emoji: "🍎", category: "Food 食物" },
+            { en: "banana", zh: "香蕉", emoji: "🍌", category: "Food 食物" },
+            { en: "orange", zh: "橙", emoji: "🍊", category: "Food 食物" },
+            { en: "milk", zh: "牛奶", emoji: "🥛", category: "Food 食物" },
+            { en: "water", zh: "水", emoji: "💧", category: "Food 食物" },
+            { en: "cake", zh: "蛋糕", emoji: "🍰", category: "Food 食物" }
+        ];        
         let currentIndex = 0;
 
         function updateDisplay() {
