@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小詞彙樂園 - Gemini 3 Pro</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #FFF9E3;
+            font-family: 'Comic Sans MS', 'Microsoft JhengHei', sans-serif;
+            overflow: hidden;
+        }
+
+        #app-container {
+            width: 90%;
+            max-width: 450px;
+            height: 750px;
+            background: white;
+            border-radius: 40px;
+            border: 8px solid #FFD166;
+            box-shadow: 0 20px 0 #FEE4A0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 10px;
+            position: relative;
+        }
+
+        #category-tag { background-color: #FEF08A; color: #CA8A04; padding: 5px 15px; border-radius: 20px; font-weight: bold; margin-bottom: 10px; }
+
+        /* 詞卡樣式 */
+        #word-card {
+            background-color: #E0F2FE;
+            width: 85%;
+            padding: 20px;
+            border-radius: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 10px 0 #BAE6FD;
+            user-select: none;
+            transition: transform 0.2s;
+        }
+        #word-card:active { transform: scale(0.98); }
+
+        #word-emoji { font-size: 80px; }
+        #word-text { font-size: 50px; color: #0369A1; font-weight: bold; margin: 5px 0; }
+        #word-ipa { font-size: 22px; color: #64748B; margin-bottom: 5px; }
+        #word-zh { font-size: 24px; color: #7DD3FC; font-weight: bold; }
+
+        /* 例句區域 */
+        #example-box { 
+            height: 80px; 
+            width: 85%;
+            color: #475569; 
+            font-size: 20px; 
+            font-style: italic; 
+            text-align: center; 
+            background: #F1F5F9;
+            padding: 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 按鈕樣式 */
+        .btn-group { display: flex; gap: 15px; width: 85%; justify-content: center; margin-bottom: 20px; }
+        .nav-btn { background-color: #FF80A0; color: white; border: none; padding: 15px 20px; font-size: 18px; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 0 #E56386; flex: 1; }
+        .example-btn { background-color: #4ADE80; color: white; border: none; padding: 15px 30px; font-size: 18px; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 0 #22C55E; width: 85%; margin-bottom: 10px;}
+        
+        .nav-btn:active, .example-btn:active { transform: translateY(3px); }
+    </style>
+</head>
+<body>
+
+    <div id="app-container">
+        <h2 style="color: #FF80A0; margin: 10px 0;">小詞彙樂園</h2>
+        <div id="category-tag">Loading...</div>
+
+        <div id="word-card" onclick="speakWord()">
+            <div id="word-emoji">🍎</div>
+            <div id="word-text">apple</div>
+            <div id="word-ipa">/ˈæp.l̩/</div>
+            <div id="word-zh">蘋果</div>
+        </div>
+
+        <div id="example-box">點擊綠色按鈕看例句</div>
+
+        <button class="example-btn" onclick="speakExample()">🔊 聽例句</button>
+
+        <div class="btn-group">
+            <button class="nav-btn" onclick="prevWord()">⬅️ 上一個</button>
+            <button class="nav-btn" onclick="nextWord()">下一個 ➡️</button>
+        </div>
+    </div>
+
+    <script>
+        const words = [
+            { en: "apple", ipa: "/ˈæp.l̩/", zh: "蘋果", emoji: "🍎", example: "This is an apple.", category: "Food 食物" },
+            { en: "cat", ipa: "/kæt/", zh: "貓", emoji: "🐱", example: "I have a cute cat.", category: "Animals 動物" },
+            { en: "dog", ipa: "/dɒɡ/", zh: "狗", emoji: "🐶", example: "The dog is running.", category: "Animals 動物" },
+            { en: "book", ipa: "/bʊk/", zh: "書本", emoji: "📖", example: "Open your book.", category: "School 學校" },
+            { en: "ruler", ipa: "/ˈruː.lə/", zh: "間尺", emoji: "📏", example: "Use a long ruler.", category: "School 學校" },
+            { en: "red", ipa: "/red/", zh: "紅色", emoji: "🔴", example: "The apple is red.", category: "Colours 顏色" }
+        ];
+        
+        let currentIndex = 0;
+
+        function updateDisplay() {
+            const w = words[currentIndex];
+            document.getElementById('word-text').innerText = w.en;
+            document.getElementById('word-ipa').innerText = w.ipa;
+            document.getElementById('word-emoji').innerText = w.emoji;
+            document.getElementById('word-zh').innerText = w.zh;
+            document.getElementById('category-tag').innerText = w.category;
+            // 每次切換單詞，重置例句顯示框
+            document.getElementById('example-box').innerText = "點擊綠色按鈕看例句";
+            speakWord();
+        }
+
+        // 發音功能（英式發音）
+        function speak(text) {
+            const msg = new SpeechSynthesisUtterance(text);
+            msg.lang = 'en-GB';
+            window.speechSynthesis.speak(msg);
+        }
+
+        function speakWord() { speak(words[currentIndex].en); }
+
+        function speakExample() {
+            const example = words[currentIndex].example;
+            document.getElementById('example-box').innerText = example;
+            speak(example);
+        }
+
+        function nextWord() {
+            currentIndex = (currentIndex + 1) % words.length;
+            updateDisplay();
+        }
+
+        function prevWord() {
+            currentIndex = (currentIndex - 1 + words.length) % words.length;
+            updateDisplay();
+        }
+
+        window.onload = updateDisplay;
+    </script>
+</body>
+</html>
